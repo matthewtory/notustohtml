@@ -523,8 +523,8 @@ void main() {
         final delta = Delta()..insert("\n");
         NotusDocument tempdocument = NotusDocument.fromDelta(delta);
         var index = tempdocument.length;
-        tempdocument.format(index - 1, 0,
-            NotusAttribute.embed.image("http://fake.link/image.png"));
+        tempdocument.insert(
+            index - 1, BlockEmbed.image("http://fake.link/image.png"));
         final NotusDocument doc = tempdocument;
 
         expect(converter.decode(html), doc.toDelta());
@@ -534,8 +534,7 @@ void main() {
         final delta = Delta()..insert("\n");
         NotusDocument tempdocument = NotusDocument.fromDelta(delta);
         var index = tempdocument.length;
-        tempdocument.format(index - 1, 0,
-            NotusAttribute.embed.horizontalRule);
+        tempdocument.insert(index - 1, BlockEmbed.horizontalRule);
         final NotusDocument doc = tempdocument;
 
         expect(converter.decode(html), doc.toDelta());
