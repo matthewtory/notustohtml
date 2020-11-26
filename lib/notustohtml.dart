@@ -41,16 +41,16 @@ class _NotusHtmlEncoder extends Converter<Delta, String> {
       }
 
       if (blockStyle == null) {
-        buffer.write(currentBlockLines.join(''));
+        buffer.write(currentBlockLines.join('\n'));
         buffer.writeln();
       } else if (blockStyle == NotusAttribute.code) {
         _writeAttribute(buffer, blockStyle);
-        buffer.write(currentBlockLines.join(''));
+        buffer.write(currentBlockLines.join(' '));
         _writeAttribute(buffer, blockStyle, close: true);
         buffer.writeln();
       } else if (blockStyle == NotusAttribute.bq) {
         _writeAttribute(buffer, blockStyle);
-        buffer.write(currentBlockLines.join(''));
+        buffer.write(currentBlockLines.join(' '));
         _writeAttribute(buffer, blockStyle, close: true);
         buffer.writeln();
       } else if (blockStyle == NotusAttribute.ol ||
